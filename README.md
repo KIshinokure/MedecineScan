@@ -1,3 +1,3 @@
-﻿# MedecineScan
+﻿# MedecineScan (Variant 25)
 
-Сервис запущен.
+Тестовый текст.
