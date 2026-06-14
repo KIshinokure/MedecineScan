@@ -1,7 +1,5 @@
 ﻿name: CI Pipeline
-
 on: [push, pull_request]
-
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
@@ -11,18 +9,15 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
-    
+        cache: 'pip'
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         pip install pytest httpx bandit safety
-
     - name: Run SAST (Bandit)
       run: bandit -r app/
-
     - name: Run Dependency Scan (Safety)
       run: safety check -r requirements.txt --continue-on-error
-
     - name: Run Tests (Pytest)
       run: pytest tests/

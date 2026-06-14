@@ -6,3 +6,4 @@ venv/
 .pytest_cache/
 models/*.pth
 !models/.gitkeep
+setup.ps1
