@@ -10,12 +10,18 @@
 * **Инфраструктура**: Docker, Docker Compose, GitHub Actions с кэшированием
 
 ## 🏛 Архитектура сервиса
+
 ```mermaid
 graph TD
-    Client["Клиент / Врач"] -->|"POST /predict (Файл)"| API["FastAPI Gateway"]
-    API -->|"Валидация"| Pydantic["Pydantic V2"]
-    Pydantic -->|"Тензор"| Model["PyTorch Layer"]
-    Model -->|"Класс"| GradCAM["Модуль Grad-CAM"]
-    GradCAM -->|"Тепловая карта"| API
-    API -->|"JSON + Base64"| Client
+    Client -->|POST predict| API
+    API -->|Validation| Pydantic
+    Pydantic -->|Tensor| Model
+    Model -->|Prediction| GradCAM
+    GradCAM -->|Heatmap| API
+    API -->|JSON Base64| Client
 
+    Client[Клиент / Врач]
+    API[FastAPI Gateway]
+    Pydantic[Pydantic V2]
+    Model[PyTorch Inference Layer]
+    GradCAM[Модуль Grad-CAM XAI]
