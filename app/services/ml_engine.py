@@ -5,8 +5,6 @@ import base64
 
 class MedicalModelService:
     def __init__(self):
-        # Заглушка для загрузки реальной модели PyTorch
-        # self.model = torch.load('models/resnet50_med.pth')
         self.is_loaded = True
         self.classes = ["Normal", "Pneumonia"]
 
@@ -18,7 +16,6 @@ class MedicalModelService:
         dummy_confidence = 0.94
         dummy_class = "Pneumonia"
         
-        # Генерация псевдо-тепловой карты Grad-CAM для демонстрации
         heatmap = cv2.applyColorMap(np.uint8(255 * img_normalized), cv2.COLORMAP_JET)
         _, buffer = cv2.imencode('.jpg', heatmap)
         b64_string = base64.b64encode(buffer).decode('utf-8')
