@@ -264,25 +264,45 @@ tests/test_api.py::test_12_predict_corrupted_image PASSED                       
 
 MedecineScan/
 ├── app/
-│   ├── api/
-│   │   ├── predict.py          # Логика обработки и классификации снимков
-│   │   └── health.py           # Проверка жизнеспособности контейнера
-│   ├── services/
-│   │   ├── ml_engine.py        # Инициализация PyTorch и прогон через модель
-│   │   └── grad_cam.py         # Вычисление градиентов и генерация карт внимания
-│   ├── core/
-│   │   └── config.py           # Валидация .env файла через Pydantic
-│   └── main.py                 # Главная точка инициализации FastAPI приложения
+
+├── api/
+
+│   ├── predict.py          # Логика обработки и классификации снимков
+
+│   └── health.py           # Проверка жизнеспособности контейнера
+
+├── services/
+
+│   ├── ml_engine.py        # Инициализация PyTorch и прогон через модель
+
+│   └── grad_cam.py         # Вычисление градиентов и генерация карт внимания
+
+├── core/
+
+│   └── config.py           # Валидация .env файла через Pydantic
+
+└── main.py                 # Главная точка инициализации FastAPI приложения
+
 ├── models/
+
 │   └── weights/
+
 │       └── .gitkeep            # Директория для хранения весов сетей (.pth)
+
 ├── tests/
+
 │   └── test_api.py             # Комплексный пакет интеграционных тестов API (12 тестов)
+
 ├── Dockerfile                  # Инструкции сборки Docker-образа бэкенда
+
 ├── docker-compose.yml          # Оркестрация сервиса
+
 ├── requirements.txt            # Список зависимостей проекта
+
 ├── .gitignore
+
 └── README.md                   # Документация проекта
+
 
 ---
 
